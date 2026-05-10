@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from app.core.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
-from jose import jwt,JWTError
+from jose import jwt
 from passlib.context import CryptContext
 
 # ========================

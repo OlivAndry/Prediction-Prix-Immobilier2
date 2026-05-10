@@ -7,13 +7,17 @@ function Navbar_home() {
     return (
         <nav className="navbar">
 
-            <div className="nav-links">
-                <Link to="/">Accueil</Link>
-                <Link to="/login">Se connecter</Link>
-                <Link to="/register">S'inscrire</Link>
-                <button onClick={toggleTheme} className="theme-toggle" title="Changer de thème">
-                    {theme === 'light' ? '🌙' : '☀️'}
-                </button>
+            <div className="nav-links" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <Link to="/">Accueil</Link>
+                    <Link to="/login">Se connecter</Link>
+                    <Link to="/register">S'inscrire</Link>
+                </div>
+                <div>
+                    <button onClick={toggleTheme} className="theme-toggle" title="Changer de thème">
+                        {theme === 'light' ? '🌙' : '☀️'}
+                    </button>
+                </div>
             </div>
         </nav>
     );

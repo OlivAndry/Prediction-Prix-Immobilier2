@@ -2,7 +2,6 @@ fastapi
 scikit-learn
 joblib
 sqlalchemy 
-psycopg2
 uvicorn
 pydantic 
 python-dotenv

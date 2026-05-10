@@ -17,14 +17,18 @@ function Navbar() {
     return (
         <nav className="navbar">
 
-            <div className="nav-links">
-                <Link to="/dashboard">Accueil</Link>
-                <Link to="/history">Historiques</Link>
-                <Link to="/performance">Performance</Link>
-                <button onClick={handleLogout}>Deconnexion</button>
-                <button onClick={toggleTheme} className="theme-toggle" title="Changer de thème">
-                    {theme === 'light' ? '🌙' : '☀️'}
-                </button>
+            <div className="nav-links" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <Link to="/dashboard">Accueil</Link>
+                    <Link to="/history">Historiques</Link>
+                    <Link to="/performance">Performance</Link>
+                </div>
+                <div>
+                    <button onClick={handleLogout}>Deconnexion</button>
+                    <button onClick={toggleTheme} className="theme-toggle" title="Changer de thème">
+                        {theme === 'light' ? '🌙' : '☀️'}
+                    </button>
+                </div>
             </div>
         </nav>
     );

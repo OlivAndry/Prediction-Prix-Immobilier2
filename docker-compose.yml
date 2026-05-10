@@ -1,0 +1,66 @@
+
+
+services:
+  # ─── PostgreSQL ───────────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    container_name: immo_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2121
+      POSTGRES_DB: immobilier_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - immo_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Backend FastAPI ──────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: immo_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://postgres:2121@db:5432/immobilier_db
+      SECRET_KEY: ${SECRET_KEY:-changeme_in_production_secret_key}
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - immo_network
+    volumes:
+      - ./backend/models:/app/models:ro
+
+  # ─── Frontend React ───────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8000
+    container_name: immo_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - immo_network
+
+volumes:
+  postgres_data:
+
+networks:
+  immo_network:
+    driver: bridge

@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.git
+.vscode
+.idea
+*.db
+*.sqlite3
+.env
+datasets
+data
+notebooks
+mon_env
