@@ -60,8 +60,8 @@ BACKEND/
 │   │   ├── database.py
 │   │   └── security.py
 │   │
-│   ├── middlewares/
-│   │   └── logging_middleware.py
+│   ├
+│   │  
 │   │
 │   ├── models/
 │   │   ├── user_model.py
@@ -75,15 +75,15 @@ BACKEND/
 │   │
 │   ├── services/
 │   │   ├── auth_service.py
-│   │   ├── evaluation_service.py
-│   │   ├── history_service.py
-│   │   ├── prediction_service.py
-│   │   └── preprocessing_service.py
-│   │
-│   └── tests/
-│       ├── test_auth.py
-│       ├── test_predict.py
-│       └── test_history.py
+│       ├── evaluation_service.py
+│       ├── history_service.py
+│       ├── prediction_service.py
+│       └── preprocessing_service.py
+│   
+│   
+│    
+│   
+│     
 │
 └── models/
     ├── best_model_XGboost.pkl
@@ -224,6 +224,15 @@ Retourne un token JWT :
 ```http
 Authorization: Bearer <token>
 ```
+
+---
+# 🌍 Déploiement
+
+| Service               | URL                                               |
+| --------------------- | ------------------------------------------------- |
+| Frontend              | https://priximmo-kappa.vercel.app/                |
+| Backend API           | https://predict-prix-immobilier.onrender.com      |
+| Documentation Swagger | https://predict-prix-immobilier.onrender.com/docs |
 
 ---
 
